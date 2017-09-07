@@ -1,1 +1,39 @@
-Welcome to the redtail wiki!
+# Introduction
+
+This project contains instructions, code and other artifacts that allow users to build a drone which can autonomously navigate through highly unstructured environments like forest trails. The drone uses deep learning-based AI running on an NVIDIA Jetson embedded platform. The code implements ideas discussed in the arXiv paper, see [references](#references) section.
+
+The project has two major parts, **modeling** and **platform implementation**.
+
+## Modeling
+The project's AI that enables autonomous navigation is based on a deep neural network (DNN) which can be trained from scratch using publicly available data. A few [pre-trained DNNs](../blob/master/models/pretrained/) are also available as a part of this project. In case you want to train TrailNet DNN from scratch, follow the steps on [this page](./Models).
+
+## Platforms
+The following platforms are currently supported:
+* [3DR IRIS+](./3DR-Iris-Setup)
+
+In general, any drone platform that uses the [Pixhawk](https://pixhawk.org/) flight controller should work too.
+
+# Getting started
+Building a complete autonomous drone platform requires proper hardware and software configuration. 
+
+## Jetson setup
+The NVIDIA Jetson platform is used to run most of the components, such as DNN inference, the controller, and video streaming. The [Jetson setup guide](./Jetson-Setup) describes steps to install all required software and dependencies.
+
+## Drone setup
+Depending on the drone platform some additional steps might be required. Follow the steps in the documentation for your particular platform:
+* [3DR IRIS+](./3DR-Iris-Setup)
+
+## GCS (Ground Control Station) setup
+A laptop is a convenient way to run GCS software like [QGroundControl](http://qgroundcontrol.com/) as well to control the drone using an NVIDIA Shield or an XBox controller. Follow [these steps](./GCSSetup) to setup GCS machine.
+
+## Simulation
+It is usually a good idea to test your code in a simulator. Follow [these steps](./testing-in-simulator) to run simulations using Gazebo.
+
+## Flying
+Once the hardware and software setup steps are complete, it's time to take off! Follow [these steps](./Launch-Sequence-and-Flying) to fly the drone.
+
+## References
+* [arXiv paper](https://arxiv.org/abs/1705.02550)
+* [Our GTC 2017 talk](http://on-demand.gputechconf.com/gtc/2017/video/s7172-smolyanskiy-autonomous-drone-navigation-with-deep-learning%20(1).PNG.mp4)
+* [Demo video showing 250 m autonomous flight, DNN activation and control](https://www.youtube.com/watch?v=H7Ym3DMSGms)
+* [Demo video showing our record making 1 kilometer autonomous flight](https://www.youtube.com/watch?v=USYlt9t0lZY)
