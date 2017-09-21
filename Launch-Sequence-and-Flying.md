@@ -35,7 +35,7 @@ To speed up this login process and avoid entering the password on each login, yo
 alias sshtx="sshpass -p 'nvidia' ssh nvidia@10.42.0.1"
 ```
 
-This assumes default user/password used on TX2. On TX1 the default user/password combination is `ubuntu/ubuntu`
+This assumes default user/password used on Jetson. Note that in previous versions of JetPack (e.g. 3.0), the default user/password combination was different: `ubuntu/ubuntu`. For better security, it is strongly recommended to change the password **before** going to the field/trail.
 
 ## Building the code
 Make sure you have the latest source code installed on the Jetson. If you ran the setup script as a part of Jetson setup, then the code should be in `~/redtail` directory. Pull and build the latest version if needed (connect network cable to the Jetson carrier board):
