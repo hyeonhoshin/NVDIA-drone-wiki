@@ -2,7 +2,7 @@ There are two major steps that need to be performed to initialize your NVIDIA Je
 
 # Installing JetPack
 Download JetPack from the [NVIDIA website](https://developer.nvidia.com/embedded/jetpack) and run the install script. Some components like **VisionWorks Pack** and **Compile CUDA Samples** can be skipped in order to save space and speed up the installation:
-![JetPack components](./images/JetPack-3.0_components.png)
+![JetPack components](./images/JetPack-3.1_components.png)
 
 After installing the JetPack, create a WiFi access point (AP) on Jetson using the Ubuntu Network Manager or `nmcli` utility. Here is an example of such network configuration where the WiFi network has been named `my-jetson-wifi`:
 
