@@ -10,7 +10,7 @@ After installing the JetPack, create a WiFi access point (AP) on Jetson using th
 
 Make sure that your WiFi network is secure and uses a reasonable password.
 
-Note: that you may need to apply [this change](http://elinux.org/Jetson/TX1_WiFi_Access_Point) to enable SSID broadcast.
+**Note**: you may need to apply [this change](http://elinux.org/Jetson/TX1_WiFi_Access_Point) to enable SSID broadcast.
 
 #### Jetson TX2 notes
 There is currently a known issue with Auvidea J-120 board and TX2 affecting USB devices. Please refer to the [documentation](../blob/master/tools/install/j120-tx2-patch/README.md) to get it fixed.
