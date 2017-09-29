@@ -98,9 +98,16 @@ Follow the standard steps to calibrate the sensors, RC, and flight modes for the
 ![QGC Flight Modes](./images/QGC_FlightModes.png)
 
 ## Pixhawk parameters
-There are several Pixhawk/PX4 parameters that need to be changed in order for all systems to work properly. These parameters can be set via QGroundControl (`Setup -> Parameters` tab) or loaded from the settings file located at `tools/platforms/iris/px4settings.config`.
+There are several Pixhawk/PX4 parameters that need to be changed in order for all systems to work properly. These parameters can be set via QGroundControl (`Setup -> Parameters` tab) or loaded from the settings file located at `tools/platforms/iris/px4settings.params`. Note that this file contains only some of the redtail-related settings as some of the settings require Pixhawk to be rebooted to proceed to the next step.
 
 **Important**: to enable flights without GPS, disable GPS support by setting `LPE_GPS_ON` parameter to 0 and restart the Pixhawk.
+
+### General
+| Page   | Parameter          | Value                                          |
+| -------| ------------------ | ---------------------------------------------- |
+| System | `SYS_MC_EST_GROUP` | local_position_estimator, attitude_estimator_q |
+
+Reboot after changing `SYS_MC_EST_GROUP` parameter before following the next steps.
 
 ### Jetson connectivity
 Change the following parameters to enable link between Jetson(MAVROS) and Pixhawk:
