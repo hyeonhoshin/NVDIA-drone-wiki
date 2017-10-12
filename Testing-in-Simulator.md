@@ -36,7 +36,7 @@ run_redtail_docker.sh [container_name] [host_data_dir] [container_data_dir]
 ```
 where `container_name` is the name of the container (default: `redtail-sim`), `host_data_dir` is the full path to a directory on the host to mount into the container (default: `/data`), `container_data_dir` is the full path to directory in the container to which `host_data_dir` will be mapped (default: `/data`)
 
-**Note**: make sure to connect all device like camera or joystick **before** starting the container.
+**Note**: make sure to connect all devices like camera or joystick **before** starting the container.
 
 ## Building components
 The container has catkin workspace created at `~/ws`. The workspace contains all components except Redtail source code. Redtail sources might be located on the host and shared among all the containers. To create proper symlinks to catkin workspace and build the components, run the following script from the container:
