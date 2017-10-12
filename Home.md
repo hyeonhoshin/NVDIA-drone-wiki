@@ -8,10 +8,13 @@ The project has two major parts, **modeling** and **platform implementation**.
 The project's AI that enables autonomous navigation is based on a deep neural network (DNN) which can be trained from scratch using publicly available data. A few [pre-trained DNNs](../blob/master/models/pretrained/) are also available as a part of this project. In case you want to train TrailNet DNN from scratch, follow the steps on [this page](./Models).
 
 ## Platforms
-The following platforms are currently supported:
+The following drone platforms are currently supported:
 * [3DR IRIS+](./3DR-Iris-Setup)
 
 In general, any drone platform that uses the [Pixhawk](https://pixhawk.org/) flight controller should work too.
+
+There is also an **experimental** support for APM Rover:
+* [Erle Rover](./Erle-Rover-Setup)
 
 # Getting started
 Building a complete autonomous drone platform requires proper hardware and software configuration. 
@@ -37,3 +40,4 @@ Once the hardware and software setup steps are complete, it's time to take off! 
 * Our GTC 2017 talk: [slides](http://on-demand.gputechconf.com/gtc/2017/presentation/s7172-nikolai-smolyanskiy-autonomous-drone-navigation-with-deep-learning.pdf), [video](http://on-demand.gputechconf.com/gtc/2017/video/s7172-smolyanskiy-autonomous-drone-navigation-with-deep-learning%20(1).PNG.mp4)
 * [Demo video showing 250 m autonomous flight, DNN activation and control](https://www.youtube.com/watch?v=H7Ym3DMSGms)
 * [Demo video showing our record making 1 kilometer autonomous flight](https://www.youtube.com/watch?v=USYlt9t0lZY)
+* [Demo video showing generalization to ground vehicle control and other environments](https://www.youtube.com/watch?v=ZKF5N8xUxfw)

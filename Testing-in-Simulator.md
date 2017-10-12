@@ -1,18 +1,87 @@
-Testing the code in the simulator is generally a good idea that helps to avoid expensive hardware failures. [Docker](https://www.docker.com) is the preferred way to set up a simulation environment as it allows the user to completely isolate all software changes from the host system, as well as have multiple simulation environments on the same machine. This document describes how to setup a Gazebo simulation platform that enables SITL (Software-In-The-Loop) testing of the project's code.
+Testing the code in the simulator is generally a good idea that helps to avoid expensive hardware failures. [Docker](https://www.docker.com) is the preferred way to set up a simulation environment as it allows the user to completely isolate all software changes from the host system, as well as have multiple simulation environments on the same machine. This document describes how to setup a Gazebo simulation platform that enables SITL (Software-In-The-Loop) testing of the project's code. There are 2 ways to use Docker for simulation: Redtail Docker image (step 1 below) or build the image manually (steps 2-6 below).
 
-1. [PX4 and ROS Docker setup](#px4-and-ros-docker-setup)
+1. [Using Redtail Docker](#redtail-docker)
+2. [PX4 and ROS Docker setup](#px4-and-ros-docker-setup)
     1. [NVIDIA GPU and CUDA support](#nvidia-gpu-and-cuda-support-optional)
-2. [Building PX4 software stack](#building-px4-software-stack)
-3. [Connecting QGroundControl to simulator](#connecting-qgroundcontrol-to-simulator)
-4. [Building controller code](#building-controller-code)
-5. [Configuring joystick](#configuring-joystick)
-6. [Running the controller](#running-the-controller)
+3. [Building PX4 software stack](#building-px4-software-stack)
+4. [Connecting QGroundControl to simulator](#connecting-qgroundcontrol-to-simulator)
+5. [Building controller code](#building-controller-code)
+6. [Configuring joystick](#configuring-joystick)
+7. [Running the controller](#running-the-controller)
     1. [Running the controller only](#running-the-controller-only)
     2. [Running DNN and controller nodes](#running-dnn-and-controller-nodes)
-7. [Installing Visual Studio Code (optional)]()
+8. [Installing Visual Studio Code (optional)](#installing-visual-studio-code)
+
+# Redtail Docker
+Redtail Docker image contains all the components required to run full Redtail simulation, such as ROS Kinetic, Gazebo, PX4 stack, CUDA with cuDNN and TensorRT, GStreamer and others. Containers created from the image allow to run ROS nodes such as DNN, controller, camera and joystick as well as debug system behavior in Gazebo simulator. The image requires NVIDIA GPU to be present as well [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker/) installed. The steps below describe how to build an image and create a container.
+## Building Docker image
+The Redtail image is currently not on the Docker Hub so you will have to build it first. Redtail project uses [NVIDIA TensorRT 2.1](https://developer.nvidia.com/tensorrt) library which has to be downloaded first. Make sure to download [TensorRT 2.1 for Ubuntu 16.04 and CUDA 8.0](https://developer.nvidia.com/compute/machine-learning/tensorrt/2.1/ga/TensorRT-2.1.2.x86_64.cuda-8.0-16-04-tar.bz2) tar package.
+
+Next, go to `redtail/tools/simulation/docker` and run the build script:
+```
+./build_redtail_image.sh <path to TensorRT-2.1.2 tar file>
+```
+Building the image may take some time. Once the build is finished, verify it by running `docker images` command:
+```
+$ docker images
+REPOSITORY                     TAG                            IMAGE ID            CREATED             SIZE
+nvidia-redtail-sim             kinetic                        b23157eb05e7        21 hours ago        6.21GB
+
+```
+
+## Creating container
+To create a container, navigate to `redtail/tools/simulation` and run `run_redtail_docker.sh` script. The script has 3 optional parameters:
+```
+run_redtail_docker.sh [container_name] [host_data_dir] [container_data_dir] 
+```
+where `container_name` is the name of the container (default: `redtail-sim`), `host_data_dir` is the full path to a directory on the host to mount into the container (default: `/data`), `container_data_dir` is the full path to directory in the container to which `host_data_dir` will be mapped (default: `/data`)
+
+**Note**: make sure to connect all device like camera or joystick **before** starting the container.
+
+## Building components
+The container has catkin workspace created at `~/ws`. The workspace contains all components except Redtail source code. Redtail sources might be located on the host and shared among all the containers. To create proper symlinks to catkin workspace and build the components, run the following script from the container:
+```sh
+~/build_redtail.sh /data/src/redtail
+```
+Replace path as needed.
+
+## Running components
+There are several components that need to be run, usually from different terminal windows connected to the same container.
+### Running Gazebo simulator
+```sh
+cd ~/px4/Firmware/
+make posix_sitl_default gazebo
+```
+Once the build is finished, Gazebo window should appear with 3DR Iris drone model. Follow the [steps](#testing-gazebo) to take off and land the drone.
+
+### Running MAVROS
+Open a new terminal window and run `run_redtail_docker.sh` script again to connect to existing running container. If you used default container name (`redtail-sim`) no parameters are required to run the script. Once in the container, run:
+```sh
+cd ${CATKIN_WS}/
+roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557" gcs_url:="udp://@172.17.0.1"
+```
+If you run QGroundControl now, it should be able to successfully connect to the vehicle.
+
+### Running Redtail components
+#### Running controller and joystick
+In another terminal window connected to the running container:
+```sh 
+cd ${CATKIN_WS}/
+rosrun joy joy_node _dev:=/dev/input/js0 _autorepeat_rate:=30 &
+rosrun px4_controller px4_controller_node _altitude_gain:=2
+```
+Switch to Gazebo window and wait a little bit. The drone should take off and you should be able to control it with the joystick. Note that default joystick type is NVIDIA Shield, if you have a XBox then pass the appropriate `joy_type` parameter to the px4 controller node.
+
+Follow [these steps](#running-dnn-and-controller-nodes) to run DNN and image publishing components (note: you don't need to create symlinks so skip step 1). As an alternative to `image_pub` node, a real camera can be used via `gscam` ROS node, for example:
+```sh
+cd ${CATKIN_WS}/
+export GSCAM_CONFIG="v4l2src device=/dev/video0 ! video/x-raw, width=640, height=360 ! videoconvert"
+rosrun gscam gscam
+```
+Another option would be using pre-recorded rosbag files, refer to [ROS wiki](http://wiki.ros.org/rosbag) for more information.
 
 # PX4 and ROS Docker setup
-Docker Hub contains a [px4-dev-ros image](https://hub.docker.com/r/px4io/px4-dev-ros/) which includes the PX4 firmware, simulation tools, and ROS Indigo. 
+In case Redtail Docker image cannot be used, there is an option to build the image manually. The following sections describe such process. Docker Hub contains a [px4-dev-ros image](https://hub.docker.com/r/px4io/px4-dev-ros/) which includes the PX4 firmware, simulation tools, and ROS Indigo. 
 Follow the instructions on the [PX4 developer](https://dev.px4.io/en/test_and_ci/docker.html) page to create a Docker container.
 
 **Note**: make sure to pull `px4io/px4-dev-ros:v1.0` rather than the `latest` tag.
@@ -129,6 +198,7 @@ cd Firmware/
 git checkout v1.4.4
 make posix_sitl_default gazebo
 ```
+### Testing Gazebo
 Once the build is finished, the Gazebo simulator will be launched with a pre-loaded 3DR Iris model. It should look something like this:
 
 ![Gazebo](./images/Gazebo.png)

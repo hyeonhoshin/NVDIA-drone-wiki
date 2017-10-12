@@ -2,7 +2,7 @@
 
 * [Training models](./Models)
 
-* [Building a drone platform](./Home#platforms)
+* [Building a platform](./Home#platforms)
 
 * [Jetson setup](./Jetson-Setup)
 
