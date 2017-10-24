@@ -177,6 +177,10 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 make -j4
 make install
 ```
+**Note**: in case the build fails, add the following snippet to the `cmake` command and try again:
+```
+-D CUDA_CUDA_LIBRARY=/usr/local/cuda/lib64/stubs/libcuda.so
+```
 
 # Building PX4 software stack
 ## Update GCC
