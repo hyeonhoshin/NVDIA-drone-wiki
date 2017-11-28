@@ -112,7 +112,7 @@ Change host IP address as needed.
 To run the TrailNet DNN node, run `caffe_ros` node with the TrailNet model:
 ```sh
 cd ~/ws/
-rosrun caffe_ros caffe_ros_node __name:=trails_dnn _prototxt_path:=/home/nvidia/redtail/models/pretrained/TrailNet_SResNet-18.prototxt _model_path:=/home/nvidia/redtail/models/pretrained/TrailNetResNet-18.caffemodel _output_layer:=out _use_fp16:=true
+rosrun caffe_ros caffe_ros_node __name:=trails_dnn _prototxt_path:=/home/nvidia/redtail/models/pretrained/TrailNet_SResNet-18.prototxt _model_path:=/home/nvidia/redtail/models/pretrained/TrailNet_SResNet-18.caffemodel _output_layer:=out _use_fp16:=true
 ```
 
 ### Object detection (YOLO) DNN node
