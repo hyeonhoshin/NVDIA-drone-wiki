@@ -22,7 +22,10 @@ APM stack:
  roslaunch mavros apm.launch fcu_url:="/dev/ttyTHS2:921600" gcs_url:="udp://@YOUR_GCS_IP"
 ```
 
-Replace `YOUR_GCS_IP` with IP of machine where QGroundControl is running e.g. `10.42.0.85`.
+Replace `YOUR_GCS_IP` with IP of machine where QGroundControl is running, for example:
+```
+ roslaunch mavros apm.launch fcu_url:="/dev/ttyTHS2:921600" gcs_url:="udp://@10.42.0.211"
+```
 
 If everything is connected and configured properly, you should be able to run and connect QGroundControl to the Pixhawk. You can also check the output of MAVROS, it should look something like that (for APM):
 ```
