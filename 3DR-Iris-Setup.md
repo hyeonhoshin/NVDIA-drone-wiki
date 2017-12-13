@@ -32,7 +32,7 @@ This is the properly connected Pixhawk and J-120:
 
 ![UART to TELEM2](./images/UARTtoTELEM2.jpg)
 
-**Note**: if you wish to connect Jetson DevKit board and Pixhawk follow [these instructions](../Dev-board-UART-and-Pixhawk-connection).
+**Note**: if you wish to connect Jetson DevKit board and Pixhawk follow [these instructions](../wiki/Dev-board-UART-and-Pixhawk-connection).
 
 ### Jetson power wiring
 The Iris+ drone has a [JST RCY](http://www.jst-mfg.com/product/pdf/eng/eRCY.pdf) connector which outputs 12V which is used to power the Jetson board. Use JST RCY on one end and the 4-pin Molex PicoBlade on another end. Here is an example of such wiring (note the wires' polarity):
