@@ -10,7 +10,8 @@ Testing the code in the simulator is generally a good idea that helps to avoid e
 7. [Running the controller](#running-the-controller)
     1. [Running the controller only](#running-the-controller-only)
     2. [Running DNN and controller nodes](#running-dnn-and-controller-nodes)
-8. [Installing Visual Studio Code (optional)](#installing-visual-studio-code)
+8. [RViz visualization](#rviz-visualization)
+9. [Installing Visual Studio Code (optional)](#installing-visual-studio-code)
 
 # Redtail Docker
 Redtail Docker image contains all the components required to run full Redtail simulation, such as ROS Kinetic, Gazebo, PX4 stack, CUDA with cuDNN and TensorRT, GStreamer and others. Containers created from the image allow to run ROS nodes such as DNN, controller, camera and joystick as well as debug system behavior in Gazebo simulator. The image requires NVIDIA GPU to be present as well [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker/) installed. The steps below describe how to build an image and create a container.
@@ -348,6 +349,30 @@ To perform a full simulation with the DNN and contoller using fake video input (
     (0.0017569789197295904, 0.013640767894685268, 0.9846022129058838, 0.03274013474583626, 0.9503724575042725, 0.016887357458472252)
     ```
 4. Switch to Gazebo and make sure the drone is hovering. Now press the `A` button on the joystick and watch the drone fly! Press the `B` button to disable DNN control. At any time during the flight, you can override DNN behavior from the joystick.
+
+# RViz visualization
+[RViz](http://wiki.ros.org/rviz) is a very useful and powerful tool that allows to visualize various types of ROS messages. Our project provides basic support for RViz which consists of [redtail_debug](../tree/master/ros/packages/redtail_debug) ROS node that publishes output of DNN from `caffe_ros` node as a pose that can be visualized in RViz as well as sample `.launch` and `.rviz` files. Having a separate debug node allows for easy change to debugging functionality without the risk of inadvertently breaking the main nodes.
+To see it in action, run the following (either from container or device):
+```sh
+cd ${CATKIN_WS}
+roslaunch redtail_debug trailnet_debug.launch
+```
+`trailnet_debug.launch` file runs several nodes, including camera (uses settings for left ZED camera by default), DNN (uses TrailNet DNN by default), debug and other necessary nodes. Check the [file](../tree/master/redtail/ros/packages/redtail_debug/launch/trailnet_debug.launch) for more details. Instead of camera, you can use `image_pub` node to play video or images, make sure to set parameters `frame_id` and `camera_info_url` accordingly.
+
+Once the nodes are running, run RViz either from the container or host. If RViz is running on a different machine/container then make sure to set ROS environment variables:
+```sh
+export ROS_MASTER_URI=http://10.42.0.1:11311
+export ROS_IP=RVIZ_MACHINE_IP
+```
+You may also need to add appropriate entry to `/etc/hosts` file in case you are running the nodes on Jetson while RViz - on other machine:
+```sh
+echo "10.42.0.1 tegra-ubuntu" >> /etc/hosts
+```
+Next, run RViz and open the [config](../tree/master/redtail/ros/packages/redtail_debug/rviz/) file. If everything is setup and running correctly, you should see something like that:
+
+![RViz example](./images/TrailNet_RViz.png)
+
+**Note**: `trailnet_debug.launch` file uses `gscam` to stream video from ZED camera. It does **not** undistort the image by default! If you need undistorted image then please install [ZED ROS node](https://github.com/stereolabs/zed-ros-wrapper).
 
 # Installing Visual Studio Code
 [Visual Studio Code](https://code.visualstudio.com/) is a powerful editor and debugger that supports C/C++, Python and other languages. Running VS Code from Docker greatly simplifies development with the help of IntelliSense and debugging. This is an optional step, feel free to skip it altogether if you are not using VS Code.
