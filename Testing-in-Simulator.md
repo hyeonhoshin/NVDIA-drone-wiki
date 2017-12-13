@@ -357,7 +357,7 @@ To see it in action, run the following (either from container or device):
 cd ${CATKIN_WS}
 roslaunch redtail_debug trailnet_debug.launch
 ```
-`trailnet_debug.launch` file runs several nodes, including camera (uses settings for left ZED camera by default), DNN (uses TrailNet DNN by default), debug and other necessary nodes. Check the [file](../tree/master/redtail/ros/packages/redtail_debug/launch/trailnet_debug.launch) for more details. Instead of camera, you can use `image_pub` node to play video or images, make sure to set parameters `frame_id` and `camera_info_url` accordingly.
+`trailnet_debug.launch` file runs several nodes, including camera (uses settings for left ZED camera by default), DNN (uses TrailNet DNN by default), debug and other necessary nodes. Check the [file](../tree/master/ros/packages/redtail_debug/launch/trailnet_debug.launch) for more details. Instead of camera, you can use `image_pub` node to play video or images, make sure to set parameters `frame_id` and `camera_info_url` accordingly.
 
 Once the nodes are running, run RViz either from the container or host. If RViz is running on a different machine/container then make sure to set ROS environment variables:
 ```sh
@@ -368,7 +368,7 @@ You may also need to add appropriate entry to `/etc/hosts` file in case you are 
 ```sh
 echo "10.42.0.1 tegra-ubuntu" >> /etc/hosts
 ```
-Next, run RViz and open the [config](../tree/master/redtail/ros/packages/redtail_debug/rviz/) file. If everything is setup and running correctly, you should see something like that:
+Next, run RViz and open the [config](../tree/master/ros/packages/redtail_debug/rviz/) file. If everything is setup and running correctly, you should see something like that:
 
 ![RViz example](./images/TrailNet_RViz.png)
 
