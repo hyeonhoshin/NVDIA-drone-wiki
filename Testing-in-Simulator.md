@@ -351,8 +351,8 @@ To perform a full simulation with the DNN and contoller using fake video input (
 4. Switch to Gazebo and make sure the drone is hovering. Now press the `A` button on the joystick and watch the drone fly! Press the `B` button to disable DNN control. At any time during the flight, you can override DNN behavior from the joystick.
 
 # RViz visualization
-[RViz](http://wiki.ros.org/rviz) is a very useful and powerful tool that allows to visualize various types of ROS messages. Our project provides basic support for RViz which consists of [redtail_debug](../tree/master/ros/packages/redtail_debug) ROS node that publishes output of DNN from `caffe_ros` node as a pose that can be visualized in RViz as well as sample `.launch` and `.rviz` files. Having a separate debug node allows for easy change to debugging functionality without the risk of inadvertently breaking the main nodes.
-To see it in action, run the following (either from container or device):
+[RViz](http://wiki.ros.org/rviz) is a very useful and powerful tool that allows to visualize various types of ROS messages. Our project provides basic support for RViz which consists of [redtail_debug](../tree/master/ros/packages/redtail_debug) ROS node as well as sample `.launch` and `.rviz` files. The `redtail_debug` node publishes output of DNN from `caffe_ros` node as a pose that can be visualized in RViz. Having a separate debug node allows for easy change to debugging functionality without the risk of inadvertently breaking the main nodes.
+To see it in action, run the following either from redtail Docker container or Jetson:
 ```sh
 cd ${CATKIN_WS}
 roslaunch redtail_debug trailnet_debug.launch
@@ -362,15 +362,17 @@ roslaunch redtail_debug trailnet_debug.launch
 Once the nodes are running, run RViz either from the container or host. If RViz is running on a different machine/container then make sure to set ROS environment variables:
 ```sh
 export ROS_MASTER_URI=http://10.42.0.1:11311
-export ROS_IP=RVIZ_MACHINE_IP
+export ROS_IP=YOUR_RVIZ_MACHINE_IP
 ```
-You may also need to add appropriate entry to `/etc/hosts` file in case you are running the nodes on Jetson while RViz - on other machine:
+You may also need to add appropriate entry to `/etc/hosts` file in case you are running the nodes on Jetson while RViz - on other machine (e.g. redtail Docker container):
 ```sh
 echo "10.42.0.1 tegra-ubuntu" >> /etc/hosts
 ```
 Next, run RViz and open the [config](../tree/master/ros/packages/redtail_debug/rviz/) file. If everything is setup and running correctly, you should see something like that:
 
 ![RViz example](./images/TrailNet_RViz.png)
+
+The read arrow shows the output of TrailNet orientation and translation heads represented as a pose. That is, orientation part of the pose corresponds to DNN orientation head, while position - to DNN translation head. As an experiment, try feeding [test images](../tree/master/ros/packages/caffe_ros/tests/data) by using `image_pub` node and observe the results in RViz.
 
 **Note**: `trailnet_debug.launch` file uses `gscam` to stream video from ZED camera. It does **not** undistort the image by default! If you need undistorted image then please install [ZED ROS node](https://github.com/stereolabs/zed-ros-wrapper).
 
