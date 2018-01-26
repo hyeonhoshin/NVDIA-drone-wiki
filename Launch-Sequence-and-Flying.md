@@ -119,7 +119,7 @@ rosrun caffe_ros caffe_ros_node __name:=trails_dnn _prototxt_path:=/home/nvidia/
 To run the YOLO DNN node, run `caffe_ros` node with the YOLO model:
 ```sh
 cd ~/ws/
-rosrun caffe_ros caffe_ros_node __name:=object_dnn _prototxt_path:=/home/nvidia/redtail/models/pretrained/yolo-relu.prototxt _model_path:=/home/nvidia/redtail/models/pretrained/yolo-relu.caffemodel utput_layer:=fc25 _inp_scale:=0.00390625 _inp_fmt:="RGB" _post_proc:="YOLO" _obj_det_threshold:=0.2 _use_fp16:=true
+rosrun caffe_ros caffe_ros_node __name:=object_dnn _prototxt_path:=/home/nvidia/redtail/models/pretrained/yolo-relu.prototxt _model_path:=/home/nvidia/redtail/models/pretrained/yolo-relu.caffemodel _output_layer:=fc25 _inp_scale:=0.00390625 _inp_fmt:="RGB" _post_proc:="YOLO" _obj_det_threshold:=0.2 _use_fp16:=true
 ```
 # Flying
 The steps below describe one possible way of starting autonomous flight, you may have a different sequence of steps if needed.
