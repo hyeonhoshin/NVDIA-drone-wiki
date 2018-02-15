@@ -1,5 +1,5 @@
 The drone should be able to fly in GPS-denied environments such as forests, tunnels, and inside of buildings. You can either use a visual SLAM system or external optical tracker for estimating drone's pose (see [PX4 tutorial](https://dev.px4.io/en/ros/external_position_estimation.html)) or you can use a [PX4FLOW](https://pixhawk.org/modules/px4flow) optical flow based sensor. 
-![PX4FLOW sensor](./images/px4flow.jpg)
+![PX4FLOW sensor](./images/Skypad-px4flow.jpg)
 
 The PX4FLOW sensor computes 2D optical flow, estimates distance to the ground, and fuses this data with IMU measurements to estimate the drone's velocity. The computed velocity is then fused in PixFalcon's Extended Kalman Filter to estimate the drone's position and orientation (see [PX4FLOW tutorial](https://dev.px4.io/en/tutorials/optical_flow.html)). PX4FLOW measurements can also be fused with GPS position data to help with GPS stabilized flight. We currently use PX4FLOW with the LPE pose estimator in a PX4 1.7.0 stack. 
 The PX4FLOW is mounted on the bottom of the TBS discovery frame with its `Y` axis pointing in the direction of drone's `X` axis (its sonar should be facing the front of the drone). For best accuracy, the PX4FLOW sensor should be mounted as close as possible to the drone's center of gravity. The sensor is connected via an I2C cable to the I2C switch board that connects to PixFalcon I2C port.
@@ -27,7 +27,7 @@ If you replicate our setup and would like to use the firmware we built, it can b
 ### Hardware setup
 The PixFalcon/Pixhawk and PX4FLOW wiring is described in the [PX4](https://dev.px4.io/en/tutorials/optical_flow.html) documentation. Here is the example setup of PX4FLOW on the TBS discovery frame.
 
-![PX4FLOW on TBS](./images/PX4FlowOnTBS.JPG)
+![PX4FLOW on TBS](./images/Skypad-PX4FlowOnTBS.JPG)
 
 ### Optical sensor image focusing and testing
 Make sure that optical flow sensor camera is focused properly. We recommend using 6mm lens for better quality.
@@ -45,7 +45,7 @@ At this point you can open Plots in QGroundControl and plot any event that start
 Another problem that you will hit with using on TBS Discovery platform is the lack of vertical space below the drone.  Since the TBS discovery body leaves minimal clearance below the main body, we suggest **extending the landing gear** if you want to accommodate a PX4FLOW Camera. To extend the landing gear, you can use 3D-printed leg extensions (any extender designed for the F450 Flamewheel arms should work, e.g. https://www.thingiverse.com/thing:60722).   
 We provide [an experimental model](../../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
 Here's how we attached(zip tied) it.
-![3D Printed Landing Gearding Gear](./images/landingGear.jpg)
+![3D Printed Landing Gearding Gear](./images/Skypad-landingGear.jpg)
 
 ---
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">

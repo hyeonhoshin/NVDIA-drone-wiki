@@ -2,7 +2,7 @@
 
 For stereo vision (and pose estimation), you can mount a ZED camera to the front of the TBS Discovery.
 
-Before performing any hardware modifications, we recommend first completing the [relevant portion](Software-Setup-Guide#Optional-ZED-Setup) of the software setup guide.
+Before performing any hardware modifications, we recommend first completing the [relevant portion](Skypad-Software-Setup-Guide#Optional-ZED-Setup) of the software setup guide.
 
 ## Materials
 
@@ -27,7 +27,7 @@ To remove the housing from the ZED camera:
 
 2.  Unscrew the three screws (marked in the removed housing below):
 
-    ![](./images/Camera Casing.jpg)
+    ![](./images/Skypad-Camera Casing.jpg)
 
 3.  Once the three screws are removed, you can pry out the back plastic (which is screwed to the main circuit board); the back plastic is not glued in, but can be difficult to get leverage on (pulling the cord won't work).
 
@@ -39,7 +39,7 @@ Once the old housing has been removed, installing the new housing is straightfor
 
 2.  Bolt the ZED circuit board to the back plate using M2 nuts and bolts.
 
-    ![](./images/Camera%20Screws.jpg)
+    ![](./images/Skypad-Camera%20Screws.jpg)
 
 3.  Slide on the front plate and lock it in place with rubber bands, glue, or tape.
 
@@ -51,13 +51,13 @@ Once the old housing has been removed, installing the new housing is straightfor
 
 2.  Using a double-sided adhesive strip, mount the ZED camera housing to the front of the TBS Discovery, being careful to align it facing straight ahead.
 
-    ![](./images/Camera%20Position.jpg)
+    ![](./images/Skypad-Camera%20Position.jpg)
 
 3.  Tie up the ZED USB3 cable using a twist or zip tie to minimize space usage; we suggest wrapping around the bottom plate directly behind the camera.
 
 4.  Connect the free end of the ZED USB3 cable to the **top** USB3 port on the J120 carrier board (the bottom one will not work).
 
-5.  Once the ZED is attached, check that you can read images from the camera using one of the `zed-ros-wrapper` ROS nodes (see the [software setup guide](./Software-Setup-Guide#zed-software-setup)).
+5.  Once the ZED is attached, check that you can read images from the camera using one of the `zed-ros-wrapper` ROS nodes (see the [software setup guide](./Skypad-Software-Setup-Guide#zed-software-setup)).
 
 ## RF Shielding
 
@@ -65,7 +65,7 @@ The ZED camera's USB 3.0 cable may generate unwanted radio noise which interfere
 
 We found that moving the GPS/Compass module to the back of the drone (behind the PixFalcon) and layering RF shielding below the GPS was effective at eliminating USB 3.0-based GPS noise.  Our modified drone looks like this (using double-sided adhesive/tape to attach the GPS/shielding):
 
-![](./images/GPSWithRFShield.JPG)
+![](./images/Skypad-GPSWithRFShield.JPG)
 
 ---
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
