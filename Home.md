@@ -10,6 +10,7 @@ The project's AI that enables autonomous navigation is based on a deep neural ne
 ## Platforms
 The following drone platforms are currently supported:
 * [3DR IRIS+](./3DR-Iris-Setup)
+* [TBS Discovery Platform](./Skypad/TBS-Discovery-Setup)
 
 In general, any drone platform that uses the [Pixhawk](https://pixhawk.org/) flight controller should work too.
 
@@ -25,6 +26,7 @@ The NVIDIA Jetson platform is used to run most of the components, such as DNN in
 ## Drone setup
 Depending on the drone platform some additional steps might be required. Follow the steps in the documentation for your particular platform:
 * [3DR IRIS+](./3DR-Iris-Setup)
+* [TBS Discovery Platform](./Skypad/TBS-Discovery-Setup)
 
 ## GCS (Ground Control Station) setup
 A laptop is a convenient way to run GCS software like [QGroundControl](http://qgroundcontrol.com/) as well to control the drone using an NVIDIA Shield or an XBox controller. Follow [these steps](./GCSSetup) to setup GCS machine.
