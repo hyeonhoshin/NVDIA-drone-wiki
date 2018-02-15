@@ -10,7 +10,7 @@ The project's AI that enables autonomous navigation is based on a deep neural ne
 ## Platforms
 The following drone platforms are currently supported:
 * [3DR IRIS+](./3DR-Iris-Setup)
-* [TBS Discovery Platform](./Skypad/TBS-Discovery-Setup)
+* [TBS Discovery Platform](Skypad/TBS-Discovery-Setup)
 
 In general, any drone platform that uses the [Pixhawk](https://pixhawk.org/) flight controller should work too.
 
