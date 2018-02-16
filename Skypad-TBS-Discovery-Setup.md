@@ -22,9 +22,9 @@ Happy flying.
         * [Power Module / PDB](#power-module--pdb)
         * [8 Channel PWM Board](#8-channel-pwm-board)
         * [Attaching Compass, RC Receiver, and PixFalcon](#attaching-compass-rc-receiver-and-pixfalcon)
-        * [Attaching the LED indicator](#attaching-the-led-indicator)
-        * [Landing Gear](#landing-gear)
+        * [Attaching the LED indicator](#attaching-the-led-indicator)       
 * [Assembly 3: Verification, Testing, and Startup](#assembly-3-verification-testing-and-startup)
+* [Landing Gear](#landing-gear)
 * [Software Setup Guide](Skypad-Software-Setup-Guide)
 * [Optional PX4FLOW Build](Skypad-Optional-PX4Flow-Build)
 * [Optional ZED Camera Build](Skypad-Optional-ZED-Camera-Build)
@@ -328,12 +328,6 @@ Since the PixFalcon is mounted on the upper side of the frame, the LED on the Pi
 Here's a picture of the bottom of our frame that shows the LED placement. 
 ![External LED](./images/Skypad-ExternalLED.JPG)
 
-#### Landing Gear
-If you are attaching PX4FLOW sensor or Lidar Lite, there is not enough room below the drone. We suggest **extending the landing gear** to create extra vertical space below the frame.  
-To extend the landing gear, you can use 3D-printed leg extensions (any extender designed for the F450 Flamewheel arms should work, e.g. https://www.thingiverse.com/thing:60722).  
-We provide [an experimental model](../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
-Here's how we attached(zip tied) it.
-![3D Printed Landing Gearding Gear](./images/Skypad-landingGear.jpg)
 
 ## Assembly 3: Verification, Testing, and Startup
 
@@ -368,6 +362,13 @@ Additionally, before flight, we suggest:
 -   Making sure that the clockwise/counter-clockwise propellers are attached to the [appropriate motors](https://dev.px4.io/en/airframes/airframe_reference.html#quadrotor-wide).
 -   Making sure that the battery is fully charged.
 -   Doing a preliminary, short manually-controlled flight in an open, obstacle-free space with a safety tether tied to the bottom/side of the drone (and at a reasonable distance away).
+
+## Landing Gear
+If you are attaching PX4FLOW sensor or Lidar Lite, there is not enough room below the drone. We suggest **extending the landing gear** to create extra vertical space below the frame.  
+To extend the landing gear, you can use 3D-printed leg extensions (any extender designed for the F450 Flamewheel arms should work, e.g. https://www.thingiverse.com/thing:60722).  
+We provide [an experimental model](../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
+Here's how we attached(zip tied) it.
+![3D Printed Landing Gearding Gear](./images/Skypad-landingGear.jpg)
 
 
 ---
