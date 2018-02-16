@@ -138,7 +138,7 @@ Happy flying.
 
        ![Power Cable Soldering](./images/Skypad-Power%20Cable%20Soldering.jpg)
 
-2. 3D-print the [Jetson Mount](../../blob/master/3D%20Printable%20Components/NVIDIA%20Jetson%20Mount.stl) provided in this repo.  You can use your own printer or order a print using a service like [Shapeways](shapeways.com).
+2. 3D-print the [Jetson Mount](../blob/master/tools/platforms/skypad/NVIDIA%20Jetson%20Mount.stl) provided in this repo.  You can use your own printer or order a print using a service like [Shapeways](shapeways.com).
   ![3D Printed Jetson Mount](./images/Skypad-Jetson%20Mount.jpg)
 
 3. Before attaching the Jetson to the J120 carrier board, make sure you've finished the [Software Setup Guide](Skypad-Software-Setup-Guide) (you can SSH into the mounted drone, but doing installs and compilations on the original carrier board, with wall-current power and a full fan/heatsink, is much more convenient).

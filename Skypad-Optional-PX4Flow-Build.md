@@ -22,7 +22,7 @@ global_data.param[PARAM_BOTTOM_FLOW_FEATURE_THRESHOLD] = 20; // was 40
 global_data.param[PARAM_EXPOSURE_MAX] = 2000; // was 500
 global_data.param[PARAM_BRIGHT] = 15; // was 20
 ```
-If you replicate our setup and would like to use the firmware we built, it can be downloaded from [redtail/tools/skypad/px4flow-v1_default.px4](../../blob/master/tools/platforms/skypad/px4flow-v1_default.px4).
+If you replicate our setup and would like to use the firmware we built, it can be downloaded from [redtail/tools/skypad/px4flow-v1_default.px4](../blob/master/tools/platforms/skypad/px4flow-v1_default.px4).
 
 ### Hardware setup
 The PixFalcon/Pixhawk and PX4FLOW wiring is described in the [PX4](https://dev.px4.io/en/tutorials/optical_flow.html) documentation. Here is the example setup of PX4FLOW on the TBS discovery frame.
@@ -43,7 +43,7 @@ At this point you can open Plots in QGroundControl and plot any event that start
 
 ### Landing Gear
 Another problem that you will hit with using on TBS Discovery platform is the lack of vertical space below the drone.  Since the TBS discovery body leaves minimal clearance below the main body, we suggest **extending the landing gear** if you want to accommodate a PX4FLOW Camera. To extend the landing gear, you can use 3D-printed leg extensions (any extender designed for the F450 Flamewheel arms should work, e.g. https://www.thingiverse.com/thing:60722).   
-We provide [an experimental model](../../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
+We provide [an experimental model](../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
 Here's how we attached(zip tied) it.
 ![3D Printed Landing Gearding Gear](./images/Skypad-landingGear.jpg)
 

@@ -10,7 +10,7 @@ Before performing any hardware modifications, we recommend first completing the 
 -   Double-sided adhesive
 -   Optional housing replacement:
     -   Drill and/or pliers for disassembly
-    -   3D-Printed housing ([Front](../../blob/master/tools/platforms/skypad/ZED%20Housing%20Front.stl) and [Back](../../blob/master/tools/platforms/skypad/ZED%20Housing%20Back%20Plate.stl))
+3D%20Printable%20Components/    -   3D-Printed housing ([Front](../blob/master/tools/platforms/skypad/ZED%20Housing%20Front.stl) and [Back](../blob/master/tools/platforms/skypad/ZED%20Housing%20Back%20Plate.stl))
     -   6x M2 8mm nuts and bolts
     -   2x rubber bands, glue, or tape
 -   Optional RF shielding sheet (see the section on [RF shielding](#rf-shielding))
@@ -35,7 +35,7 @@ To remove the housing from the ZED camera:
 
 Once the old housing has been removed, installing the new housing is straightforward:
 
-1.  Print the new housing using the provided [ZED Housing Front.stl](../../blob/master/tools/platforms/skypad/ZED%20Housing%20Front.stl) and [ZED Housing Back Plate.stl](../../blob/master/tools/platforms/skypad/ZED%20Housing%20Back%20Plate.stl) files.
+1.  Print the new housing using the provided [ZED Housing Front.stl](../blob/master/tools/platforms/skypad/ZED%20Housing%20Front.stl) and [ZED Housing Back Plate.stl](../blob/master/tools/platforms/skypad/ZED%20Housing%20Back%20Plate.stl) files.
 
 2.  Bolt the ZED circuit board to the back plate using M2 nuts and bolts.
 
