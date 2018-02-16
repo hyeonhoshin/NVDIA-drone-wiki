@@ -329,7 +329,7 @@ Here's a picture of the bottom of our frame that shows the LED placement.
 #### Landing Gear
 If you are attaching PX4FLOW sensor or Lidar Lite, there is not enough room below the drone. We suggest **extending the landing gear** to create extra vertical space below the frame.  
 To extend the landing gear, you can use 3D-printed leg extensions (any extender designed for the F450 Flamewheel arms should work, e.g. https://www.thingiverse.com/thing:60722).  
-We provide [an experimental model](../../blob/master/3D%20Printable%20Components/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
+We provide [an experimental model](../blob/master/tools/platforms/skypad/DJI%20F450%20Flamewheel%20Arm%20Extension.stl) for 3D-printable arm extensions in the main project repo, which can be snapped and zip-tied on to the existing leg mounts.  
 Here's how we attached(zip tied) it.
 ![3D Printed Landing Gearding Gear](./images/Skypad-landingGear.jpg)
 
