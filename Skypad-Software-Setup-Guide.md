@@ -41,7 +41,7 @@ This section provides information regarding software setup of the Jetson and Pix
 4. Using QGroundControl, [install PX4 firmware](http://qgroundcontrol.com/loading-firmware/) [1.7.0](https://github.com/PX4/Firmware/releases/tag/v1.7.0). Install [px4fmu-v2_lpe.px4](https://github.com/PX4/Firmware/releases/download/v1.7.0/px4fmu-v2_lpe.px4), so that we can use PX4FLOW based position stablization.
 5. Run through the [initial setup process](https://www.youtube.com/watch?v=91VGmdSlbo4) for the PixFalcon in QGroundControl. Please note that although the video uses Pixhawk, the process is completely identical for PixFalcon.
 6. Run through the compass calibration process in QGroundControl as well.
-7. Set the following parameters on the PixFalcon in QGroundControl. Optionally you can import these settings from the [redtail/tools/platforms/skypad/ps4settings.params](../blob/master/tools/platforms/skypad/ps4settings.params) file.
+7. Set the following parameters on the PixFalcon in QGroundControl. Optionally you can import these settings from the [redtail/tools/platforms/skypad/px4settings.params](../blob/master/tools/platforms/skypad/px4settings.params) file.
 
 | Page | Parameter | Value |
 | --- | --- | --- |
