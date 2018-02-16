@@ -22,6 +22,8 @@ Happy flying.
         * [Power Module / PDB](#power-module--pdb)
         * [8 Channel PWM Board](#8-channel-pwm-board)
         * [Attaching Compass, RC Receiver, and PixFalcon](#attaching-compass-rc-receiver-and-pixfalcon)
+        * [Attaching the LED indicator](#attaching-the-led-indicator)
+        * [Landing Gear](#landing-gear)
 * [Assembly 3: Verification, Testing, and Startup](#assembly-3-verification-testing-and-startup)
 * [Software Setup Guide](Skypad-Software-Setup-Guide)
 * [Optional PX4FLOW Build](Skypad-Optional-PX4Flow-Build)
