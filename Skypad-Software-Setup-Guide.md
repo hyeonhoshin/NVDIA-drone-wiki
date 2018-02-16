@@ -18,7 +18,7 @@ This section provides information regarding software setup of the Jetson and Pix
 
 2. Create a Wi-Fi access point using the Ubuntu Network Manager (you may need to fix the `op_mode` parameter; see [this guide](https://elinux.org/Jetson/TX1_WiFi_Access_Point)).  For example:
 
-   ![Jetson Wi-Fi Settings](./images/Jetson Wi-Fi Settings.png)
+   ![Jetson Wi-Fi Settings](./images/JetsonWiFiAP.png)
 
    Once you've created a Wi-Fi access point, make sure that you can `ssh` into the Jetson by connecting to the Wi-Fi from your host computer and running `ssh nvidia@10.42.0.1`.  The Wi-Fi access point will be broadcast after every boot, allowing you to interact with the Jetson easily once it has been attached to the drone.
 
