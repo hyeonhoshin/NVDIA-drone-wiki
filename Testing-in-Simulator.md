@@ -1,5 +1,7 @@
 Testing the code in the simulator is generally a good idea that helps to avoid expensive hardware failures. [Docker](https://www.docker.com) is the preferred way to set up a simulation environment as it allows the user to completely isolate all software changes from the host system, as well as have multiple simulation environments on the same machine. This document describes how to setup a Gazebo simulation platform that enables SITL (Software-In-The-Loop) testing of the project's code. There are 2 ways to use Docker for simulation: Redtail Docker image (step 1 below) or build the image manually (steps 2-6 below).
 
+The current configuration assumes all components are installed on a x86 host platform running Ubuntu 16.04. It is also possible to install some components on Jetson while others (like Gazebo etc) - on the host machine. 
+
 1. [Using Redtail Docker](#redtail-docker)
 2. [PX4 and ROS Docker setup](#px4-and-ros-docker-setup)
     1. [NVIDIA GPU and CUDA support](#nvidia-gpu-and-cuda-support-optional)
