@@ -2,6 +2,10 @@ This document describes the ROS nodes that are used or implemented by the projec
 
 1. [Camera node](#camera-node)
 2. [DNN node](#dnn-node)
+    1. [TrailNet](#trailnet)
+    2. [YOLO](#yolo)
+    3. [INT8 inference](#int8-inference)
+    4. [Running tests](#running-tests)
 3. [Controller node](#controller-node)
 3. [Image publisher node](#image-publisher)
 
@@ -69,6 +73,20 @@ For example, if DNN detected a person (label:14) and a dog (label: 12) in the im
 | ---- | --- | ----- | ----- | ---- | -----|
 | 14.0 | 0.5 | 120.0 | 80.0  | 30.0 | 60.0 |
 | 12.0 | 0.4 | 160.0 | 115.0 | 40.0 | 20.0 |
+
+## INT8 inference
+Running inference with `INT8` precision improves both performance (speed) and power efficiency on hardware that has native `INT8` support. Note that at the moment, `INT8` is supported on GP102-GP106 Pascal GPUs. Jetson TX1 and TX2 do **not** support `INT8` instructions so in this case `caffe_ros` node will use `FP32` mode. For more details on INT8 hardware support and implementation details in TensorRT see [here](https://devblogs.nvidia.com/mixed-precision-programming-cuda-8/) and [here](http://on-demand.gputechconf.com/gtc/2017/presentation/s7310-8-bit-inference-with-tensorrt.pdf).
+
+redtail 2.0 introduces new parameter in `caffe_ros` node: `data_type` which accepts the values: `fp32`, `fp16` and `int8`. Note that existing parameter, `use_fp16`, while deprecated, is still supported.
+
+Using `INT8` mode requires additional step to ensure no loss in model quality: model calibration. During model calibration, the network is fed with representative sample from a dataset so relevant statistics can be collected and then used to perform runtime `INT8` inference with as little loss in accuracy as possible. The sample calibration batches must be as close to what the network will "see" during runtime. The calibration needs to be performed only once and then can be stored as a file that will be used later during runtime.
+
+`caffe_ros` node now supports 2 parameters that enable calibration:
+* `int8_calib_src` provides a path (directory or a single image file) to calibration samples. If parameter is directory, all files will be read and used in calibration process. This process may take some time depending on the number of images. Once calibration is performed, this parameter can be removed (or set to empty string) to avoid re-calibration on every run.
+* `int8_calib_cache` specifies path to calibration cache. If the file exists, it will be loaded and used by `caffe_ros` runtime. If it does not exist, it will be created by calibration process (this requires `int8_calib_src` parameter to be set).
+
+Our `TrailNet` and `YOLO` models were trained as `FP16`-aware models so there is almost no difference in results produced by these networks in `FP32` and `FP16` modes. However, no special care was taken to make sure the networks also work in `INT8` mode so for these network results obtained in `INT8` might be different from results in `FP32`/`FP16` modes.
+
 
 ## Running tests
 To verify that the DNN node is working properly, run the basic end-to-end tests that come with `caffe_ros` package. In the catkin workspace directory, run the following (replace paths if needed):

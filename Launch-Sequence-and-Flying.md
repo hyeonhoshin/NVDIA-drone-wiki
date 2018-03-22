@@ -99,14 +99,18 @@ First, make sure that Jetson board has the camera attached and it is displayed i
 To enable camera feed publishing in ROS, run `gscam` node:
 ```sh
 cd ~/ws/
-export GSCAM_CONFIG="v4l2src device=/dev/video0 ! video/x-raw, width=640, height=360 ! videoconvert"
-rosrun gscam gscam
+rosrun gscam gscam _gscam_config:="v4l2src device=/dev/video0 ! video/x-raw, width=640, height=360 ! videoconvert"
 ```
-If you want to enable streaming video to ground station using H.265 encoder, use a different value of the environment variable:
+If you want to enable streaming video to ground station using H.265 encoder, use a different value of the `_gscam_config` parameter:
 ```sh
-export GSCAM_CONFIG="v4l2src device=/dev/video0 ! tee name=t ! queue ! videoconvert ! omxh265enc ! video/x-h265, stream-format=byte-stream ! h265parse ! rtph265pay config-interl=1 ! udpsink host=10.42.0.211 port=6000 t. ! queue ! video/x-raw, width=640, height=360 ! videoconvert"
+rosrun gscam gscam _gscam_config:="v4l2src device=/dev/video0 ! tee name=t ! queue ! videoconvert ! omxh265enc ! video/x-h265, stream-format=byte-stream ! h265parse ! rtph265pay config-interl=1 ! udpsink host=10.42.0.211 port=6000 t. ! queue ! video/x-raw, width=640, height=360 ! videoconvert"
 ```
 Change host IP address as needed.
+You can also use environment variable instead of parameter to set `gscam` GStreamer pipeline:
+```sh
+export GSCAM_CONFIG="v4l2src device=/dev/video0 ! tee name=t ! queue ! videoconvert ! omxh265enc ! video/x-h265, stream-format=byte-stream ! h265parse ! rtph265pay config-interl=1 ! udpsink host=10.42.0.211 port=6000 t. ! queue ! video/x-raw, width=640, height=360 ! videoconvert"
+rosrun gscam gscam
+```
 
 ### TrailNet DNN node
 To run the TrailNet DNN node, run `caffe_ros` node with the TrailNet model:
