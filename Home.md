@@ -1,6 +1,6 @@
 # Introduction
 
-This project contains instructions, code and other artifacts that allow users to build a drone which can autonomously navigate through highly unstructured environments like forest trails. The drone uses deep learning-based AI running on an NVIDIA Jetson embedded platform. The code implements ideas discussed in the arXiv paper, see [references](#references) section.
+This project contains instructions, code and other artifacts that allow users to build mobile robots (drones, rovers) which can autonomously navigate through highly unstructured environments like forest trails. Our components use deep learning-based AI running on an NVIDIA Jetson embedded platform. The code implements ideas discussed in the arXiv paper, see [references](#references) section.
 
 The project has two major parts, **modeling** and **platform implementation**.
 
@@ -8,11 +8,12 @@ The project has two major parts, **modeling** and **platform implementation**.
 The project's AI that enables autonomous navigation is based on a deep neural network (DNN) which can be trained from scratch using publicly available data. A few [pre-trained DNNs](../blob/master/models/pretrained/) are also available as a part of this project. In case you want to train TrailNet DNN from scratch, follow the steps on [this page](./Models).
 
 ## Platforms
-The following drone platforms are currently supported:
-* [3DR IRIS+](./3DR-Iris-Setup)
+The following platforms are currently supported:
 * [TBS Discovery Platform](./Skypad-TBS-Discovery-Setup)
+* [3DR IRIS+, older](./3DR-Iris-Setup)
+* Differential drive rover support is coming
 
-In general, any drone platform that uses the [Pixhawk](https://pixhawk.org/) flight controller should work too.
+In general, any platform that uses the [Pixhawk](https://pixhawk.org/) autopilot should work too.
 
 There is also an **experimental** support for APM Rover:
 * [Erle Rover](./Erle-Rover-Setup)
@@ -25,8 +26,8 @@ The NVIDIA Jetson platform is used to run most of the components, such as DNN in
 
 ## Drone setup
 Depending on the drone platform some additional steps might be required. Follow the steps in the documentation for your particular platform:
-* [3DR IRIS+](./3DR-Iris-Setup)
 * [TBS Discovery Platform](./Skypad-TBS-Discovery-Setup)
+* [3DR IRIS+, older](./3DR-Iris-Setup)
 
 ## GCS (Ground Control Station) setup
 A laptop is a convenient way to run GCS software like [QGroundControl](http://qgroundcontrol.com/) as well to control the drone using an NVIDIA Shield or an XBox controller. Follow [these steps](./GCSSetup) to setup GCS machine.
@@ -43,3 +44,4 @@ Once the hardware and software setup steps are complete, it's time to take off! 
 * [Demo video showing 250 m autonomous flight, DNN activation and control](https://www.youtube.com/watch?v=H7Ym3DMSGms)
 * [Demo video showing our record making 1 kilometer autonomous flight](https://www.youtube.com/watch?v=USYlt9t0lZY)
 * [Demo video showing generalization to ground vehicle control and other environments](https://www.youtube.com/watch?v=ZKF5N8xUxfw)
+* Stereo DNN, GTC18 talk: [arXiv paper](https://arxiv.org/abs/1803.09719), [Stereo DNN video demo](https://youtu.be/0FPQdVOYoAU)
