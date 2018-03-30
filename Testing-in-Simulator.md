@@ -300,7 +300,7 @@ Now open Gazebo window and see the drone taking off and hovering. Try navigating
 ![Gazebo, QGC and controller](./images/Gazebo_QGC_Ctl.png)
 
 ## Running DNN and controller nodes
-To perform a full simulation with the DNN and contoller using fake video input (e.g. a static image or a video), run all 3 steps from the previous section and then run the DNN and image publisher nodes:
+To perform a full simulation with the DNN and controller using fake video input (e.g. a static image or a video), run all 3 steps from the previous section and then run the DNN and image publisher nodes:
 1. Create catkin workspace mappings and build nodes:
     ```sh
     ln -s /redtail/ros/packages/caffe_ros ${CATKIN_WS}/src/
