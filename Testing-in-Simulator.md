@@ -18,7 +18,7 @@ The current configuration assumes all components are installed on a x86 host pla
 # Redtail Docker
 Redtail Docker image contains all the components required to run full Redtail simulation, such as ROS Kinetic, Gazebo, PX4 stack, CUDA with cuDNN and TensorRT, GStreamer and others. Containers created from the image allow to run ROS nodes such as DNN, controller, camera and joystick as well as debug system behavior in Gazebo simulator. The image requires NVIDIA GPU to be present as well [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker/) installed. The steps below describe how to build an image and create a container. Note that this setup was tested with NVIDIA Docker v1. There are known issues with v2 (e.g. no OpenGL drivers etc) so, if possible, try using v1 for full-featured experience.
 ## Building Docker image
-The Redtail image is currently not on the Docker Hub so you will have to build it first. Redtail project uses [NVIDIA TensorRT 3.0](https://developer.nvidia.com/tensorrt) library which has to be downloaded first. Make sure to download TensorRT 3.0 for Ubuntu 16.04 and CUDA 8.0 tar package.
+The Redtail image is currently not on the Docker Hub so you will have to build it first. Redtail project uses [NVIDIA TensorRT 3.0](https://developer.nvidia.com/tensorrt) library which has to be downloaded first. Make sure to download **TensorRT 3.0 for Ubuntu 16.04 and CUDA 8.0** tar package.
 
 Next, go to `redtail/tools/simulation/docker` and run the build script:
 ```
