@@ -1,44 +1,46 @@
-# Introduction
+# 소개
 
-This project contains instructions, code and other artifacts that allow users to build mobile robots (drones, rovers) which can autonomously navigate through highly unstructured environments like forest trails. Our components use deep learning-based AI running on an NVIDIA Jetson embedded platform. The code implements ideas discussed in the arXiv paper, see [references](#references) section.
+이 프로젝트는 지시, 코드, 그리고 움직이는 로봇을 만들기 위한 아티팩트들을 포함하고 있습니다. 특히 우리는 숲처럼 불규칙한 환경에서 자동으로 비행하는 드론을 연구합니다. 우리의 장비들은 엔비디아의 젯슨 임베디드 플랫폼에서 동작하는 딥러닝 AI를 사용합니다. 코드들은 [참조문헌](#references)을 보시면, arXiv라는 논문에서 사용한 아이디어를 사용하고 있습니다.
 
-The project has two major parts, **modeling** and **platform implementation**.
+이 프로젝트는 크게 다음 부분으로 나뉩니다. **모델링** 그리고 **플랫폼 구현** 으로요.
 
-## Modeling
-The project's AI that enables autonomous navigation is based on a deep neural network (DNN) which can be trained from scratch using publicly available data. A few [pre-trained DNNs](../blob/master/models/pretrained/) are also available as a part of this project. In case you want to train TrailNet DNN from scratch, follow the steps on [this page](./Models).
+## 모델링
 
-## Platforms
-The following platforms are currently supported:
+자율 주행을 가능하게 하는 이 프로젝트의 AI는 딥 뉴럴 네트워크(DNN)에 기반하고 있습니다. 또한, 여기서 이 DNN은 공개되어 이용가능한 데이터들을 사용하여, 아무것도 없는 상태서부터 훈련(train)되어질 수 있습니다. 아주 적은 [미리 훈련된 DNNs](../blob/master/models/pretrained/)들은 이 프로젝트의 일부로써 이용가능합니다. 처음부터 TrailNet DNN을 학습시키고 싶으실 경우에는, 이 [Step](./Models)을 따라 주세요.
+
+## 플랫폼
+
+다음 플랫폼들이 현재 지원됩니다 :
 * [TBS Discovery Platform](./Skypad-TBS-Discovery-Setup)
 * [3DR IRIS+, older](./3DR-Iris-Setup)
-* Differential drive rover support is coming
+* 특이한 이동체들은 지원이 곧 될 예정이랍니다.
 
-In general, any platform that uses the [Pixhawk](https://pixhawk.org/) autopilot should work too.
+일반적으로, [Pixhawk](https://pixhawk.org/) autopilot을 사용하는거면 어떤 플랫폼이든 작동할거에요.
 
-There is also an **experimental** support for APM Rover:
+APM기반의 이동체를 위해서 실험적으로 지원하는 것도 존재합니다:
 * [Erle Rover](./Erle-Rover-Setup)
 
-# Getting started
-Building a complete autonomous drone platform requires proper hardware and software configuration. 
+# 시작하기
+완벽히 자율적으로 움직이는 드론 플랫폼(운항 계기 시스템)을 만드는 것은 적절한 하드웨어와 소프트웨어 설정을 필요로 합니다.
 
-## Jetson setup
-The NVIDIA Jetson platform is used to run most of the components, such as DNN inference, the controller, and video streaming. The [Jetson setup guide](./Jetson-Setup) describes steps to install all required software and dependencies.
+## Jetson 준비
+NVIDIA Jetson 플랫폼은 DNN을 이용한 추론, 컨트롤러, 비디오 스트리밍 같은 대부분의 것들을 위해 사용되곤 합니다. [Jetson setup guide](./Jetson-Setup)는 SW간의 의존성을 고려하여 필요한 모든 소프트웨어를 설치하는 방법을 기술하고 있습니다.
 
-## Drone setup
-Depending on the drone platform some additional steps might be required. Follow the steps in the documentation for your particular platform:
+## Drone 준비
+드론 플랫폼에 따라서 몇몇의 추가적인 단계가 필요할지도 모릅니다. 당신의 플랫폼에 따라 각 문서에 있는 단계를 따라주세요.
 * [TBS Discovery Platform](./Skypad-TBS-Discovery-Setup)
 * [3DR IRIS+, older](./3DR-Iris-Setup)
 
 ## GCS (Ground Control Station) setup
-A laptop is a convenient way to run GCS software like [QGroundControl](http://qgroundcontrol.com/) as well to control the drone using an NVIDIA Shield or an XBox controller. Follow [these steps](./GCSSetup) to setup GCS machine.
+노트북은 [QGroundControl](http://qgroundcontrol.com/)같은 GCS 소프트웨어를 실행하는 것뿐만아니라 NVIDIA 쉴드나 XBOX 컨트롤러를 사용하는 드론을 제어하기에도 편리한 방법입니다. GCS 장치를 설정하기 위해서는 [이 과정들](./GCSSetup)을 따르세요.
 
-## Simulation
-It is usually a good idea to test your code in a simulator. Follow [these steps](./testing-in-simulator) to run simulations using Gazebo.
+## 시뮬레이션
+시뮬레이터에서 당신의 코드를 시험해보는 것은 좋은 생각입니다. Gazebo를 사용하여 시뮬레이션을 실행시키려면 [이 과정](./testing-in-simulator)을 따르세요.
 
-## Flying
-Once the hardware and software setup steps are complete, it's time to take off! Follow [these steps](./Launch-Sequence-and-Flying) to fly the drone.
+## 비행
+일단 하드웨어와 소프트웨어의 설정 단계가 완료되면, 이륙할 시간입니다! 드론을 날리기 위해 [이 과정](./Launch-Sequence-and-Flying)을 따르세요.
 
-## References
+## 참고
 * [arXiv paper](https://arxiv.org/abs/1705.02550)
 * Our GTC 2017 talk: [slides](http://on-demand.gputechconf.com/gtc/2017/presentation/s7172-nikolai-smolyanskiy-autonomous-drone-navigation-with-deep-learning.pdf), [video](http://on-demand.gputechconf.com/gtc/2017/video/s7172-smolyanskiy-autonomous-drone-navigation-with-deep-learning%20(1).PNG.mp4)
 * [Demo video showing 250 m autonomous flight, DNN activation and control](https://www.youtube.com/watch?v=H7Ym3DMSGms)
