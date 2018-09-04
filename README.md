@@ -6,7 +6,7 @@
 
 ## 모델링
 
-자율 주행을 가능하게 하는 이 프로젝트의 AI는 딥 뉴럴 네트워크(DNN)에 기반하고 있습니다. 또한, 여기서 이 DNN은 공개되어 이용가능한 데이터들을 사용하여, 아무것도 없는 상태서부터 훈련(train)되어질 수 있습니다. 아주 적은 [미리 훈련된 DNNs](../blob/master/models/pretrained/)들은 이 프로젝트의 일부로써 이용가능합니다. 처음부터 TrailNet DNN을 학습시키고 싶으실 경우에는, 이 [Step](./Models)을 따라 주세요.
+자율 주행을 가능하게 하는 이 프로젝트의 AI는 딥 뉴럴 네트워크(DNN)에 기반하고 있습니다. 또한, 여기서 이 DNN은 공개되어 이용가능한 데이터들을 사용하여, 아무것도 없는 상태서부터 훈련(train)되어질 수 있습니다. 아주 적은 [미리 훈련된 DNNs](https://github.com/NVIDIA-Jetson/redtail/tree/master/models/pretrained/)들은 이 프로젝트의 일부로써 이용가능합니다. 처음부터 TrailNet DNN을 학습시키고 싶으실 경우에는, 이 [Step](./Models)을 따라 주세요.
 
 ## 플랫폼
 
