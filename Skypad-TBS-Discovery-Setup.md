@@ -292,13 +292,13 @@ We recommend mounting the PixFalcon on the top plate, directly above the center 
 
 ![PDB Cable Connections](./images/Skypad-PDB%20Cable%20Connections.jpg)
 
-To power the PixFalcon, we need to attach it to the power module.
+PixFlacon에 전원을 공급하기 위해, 우리는 파워 모듈에 그것을 붙혀야합니다.
 
-The power module should already be wired to terminals on the TBS Discovery frame (See [Assembly 1](#assembly-1-jetson-attachment)).
+파워 모듈은 TBS 프레임에 있는 터미널에 미리 전선이 연결되어 있어야 합니다.(See [Assembly 1](#assembly-1-jetson-attachment)).
 
-We recommend attaching the power module to the bottom of the top plate with double-sided adhesive and electrical tape, to leave room on the bottom for the Jetson.
+양면 접착 및 전기 테이프로 전원 모듈을 상단 판의 하단에 연결하는 것이 좋습니다. Jetson을 위해 아랫부분에 공간을 만들어놓기 위해서요.
 
-Once the power module is secured to the bottom of the top plate, connect one end of the 6-pin connector (included with the power module) to the power module, and thread the other end onto the other side of the top plate so that it can be attached to the PixFalcon.
+파워 모듈이 상판의 하부에 확실히 고정되면, 6핀 커넥터의 끝을 파워 커넥터에 연결하고, 다른 하나를 상판의 다른 부분의 끝에 연결하세요. PixFalcon에 부착되도록요. 
 
 #### 8 Channel PWM Board
 
